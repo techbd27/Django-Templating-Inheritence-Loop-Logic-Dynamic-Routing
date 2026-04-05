@@ -1,0 +1,34 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Templating Demo</title>
+</head>
+<body>
+    <h1>Welcome to the Templating Demo</h1>
+    <p>This is a simple example of Django templating.</p>
+    <h2>Hi, I am {{ person.name }}!</h2> # context Data from views.py. 
+    <p>I am {{ person.age }} years old and I live in {{ person.city }}.</p>
+    <p>My hobbies are: {{ person.hobbies|join:", " }}.</p>
+    <!-- We can also use loop to iterate over hobbies list. -->
+    <h3>My Hobbies: ({{ person.hobbies|length }})</h3> # length filter to get the number of hobbies.
+    <ul>
+        {% for hobby in person.hobbies %}
+            <li>{{ hobby }}</li>
+        {% endfor %}
+    </ul>
+    <p>
+    {% if person.age >= 18 %}
+        I am an adult.
+    {% elif person.age >= 13 %}
+        I am a teenager.
+    {% else %}
+        I am a minor.
+    {% endif %}
+    </p>
+
+
+</body>
+</html> 
+
